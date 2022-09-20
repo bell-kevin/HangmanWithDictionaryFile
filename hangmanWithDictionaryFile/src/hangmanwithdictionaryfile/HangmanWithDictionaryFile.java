@@ -42,19 +42,18 @@ public class HangmanWithDictionaryFile {
                 System.out.println("Exception: " + e.getMessage());
             } // end try/catch block
         } // end if/else condition
-
         // load information from text file
         File textFile = new File("words.txt");
         FileReader in;
         BufferedReader readFile;
-        String lineOfText="";
+        String lineOfText = "";
         ArrayList<String> listOfWords = new ArrayList<>();
         try {
             in = new FileReader(textFile);
             readFile = new BufferedReader(in);
             while ((lineOfText = readFile.readLine()) != null) {
                 listOfWords.add(lineOfText);
-            }
+            } // end while loop
             readFile.close();
             in.close();
         } catch (FileNotFoundException e) {
@@ -63,21 +62,26 @@ public class HangmanWithDictionaryFile {
         } catch (IOException e) {
             System.out.println("Problem reading file.");
             System.out.println("Exception: " + e.getMessage());
-        }
-        //Get random number so you can call that posion of the array list.
-        int randomNumber = (int) (Math.random() * 5 + 1);
-        Game game = new Game(listOfWords.get(randomNumber)); //create a new game
+        } // end catch
         String input;
         char guess;
         //play game
-        game.display(); //display the board
-        do {
-            System.out.print("Guess a letter: ");
-            input = computerKeyboardInput.nextLine();
-            guess = input.charAt(0);
-            game.findLetter(guess); //find letter           
-        } while (!game.isGameOver()); //check if game over
-        //end game
-        System.out.println("Congratulations, game is over");
+        String response = "y";
+        while (response.equalsIgnoreCase("y")) {
+            //Get random number so you can call that posion of the array list.
+            int randomNumber = (int) (Math.random() * 5 + 1);
+            Game game = new Game(listOfWords.get(randomNumber)); //create game
+            game.display(); //display the board
+            do {
+                System.out.print("Guess a letter: ");
+                input = computerKeyboardInput.nextLine();
+                guess = input.charAt(0);
+                game.findLetter(guess); //find letter  
+            } while (!game.isGameOver()); //check if game over
+            //end game
+            System.out.println("Congratulations");
+            System.out.print("Do you want to play again? (y or n) ");
+            response = computerKeyboardInput.nextLine();
+        } // end while loop
     } // end main method
 } // end HangmanWithDictionaryFile class
