@@ -42,7 +42,31 @@ public class HangmanWithDictionaryFile {
                 System.out.println("Exception: " + e.getMessage());
             } // end try/catch block
         } // end if/else condition
-        Game game = new Game("testing"); //create a new game
+
+        // load information from text file
+        File textFile = new File("words.txt");
+        FileReader in;
+        BufferedReader readFile;
+        String lineOfText="";
+        ArrayList<String> listOfWords = new ArrayList<>();
+        try {
+            in = new FileReader(textFile);
+            readFile = new BufferedReader(in);
+            while ((lineOfText = readFile.readLine()) != null) {
+                listOfWords.add(lineOfText);
+            }
+            readFile.close();
+            in.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+            System.out.println("Exception: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Problem reading file.");
+            System.out.println("Exception: " + e.getMessage());
+        }
+        //Get random number so you can call that posion of the array list.
+        int randomNumber = (int) (Math.random() * 5 + 1);
+        Game game = new Game(listOfWords.get(randomNumber)); //create a new game
         String input;
         char guess;
         //play game
