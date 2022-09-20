@@ -24,7 +24,6 @@ public class HangmanWithDictionaryFile {
             File outputFile = new File("words.txt");
             FileWriter out;
             BufferedWriter writeFile;
-
             String word;
             try {
                 out = new FileWriter(outputFile);
