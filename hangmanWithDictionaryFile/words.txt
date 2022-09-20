@@ -1,0 +1,6 @@
+generator
+automobile
+reading
+writing
+computer
+software
