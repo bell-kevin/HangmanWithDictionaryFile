@@ -19,7 +19,7 @@ public class HangmanWithDictionaryFile {
         path = Paths.get(filename);
         Scanner computerKeyboardInput = new Scanner(System.in);
         if (Files.exists(path)) {
-            System.out.println("Sorry, that file alreay exists.");
+            System.out.println("Guess a random word from my dictionary.");
         } else {
             File outputFile = new File("words.txt");
             FileWriter out;
