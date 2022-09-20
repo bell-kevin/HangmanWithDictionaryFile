@@ -11,12 +11,16 @@ import java.util.Scanner;
 public class HangmanWithDictionaryFile {
 
     public static void main(String[] args) {
+        System.out.println("Ch 9 Hangman by Kevin Bell\n");
         Scanner computerKeyboardInput = new Scanner(System.in);
+        for (int i = 0; i < 6; i++) {
+            System.out.print("Enter new word: ");
+            String word = computerKeyboardInput.nextLine();
+        } // end for loop
         Game game = new Game("testing"); //create a new game
         String input;
         char guess;
         //play game
-        System.out.println("Ch 9 Hangman by Kevin Bell\n");
         game.display(); //display the board
         do {
             System.out.print("Guess a letter: ");
